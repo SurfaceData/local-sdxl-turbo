@@ -1,0 +1,27 @@
+[project]
+name = "local_sdxl_turbo"
+description = "Mini OpenAI server for SDXL Turbo"
+version = "0.0.1"
+authors = [
+    {name = "Keith Stevens"},
+]
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "diffusers",
+    "fastapi",
+    "loguru",
+    "pydantic",
+    "pydantic-settings",
+    "torch",
+    "tqdm",
+    "transformers",
+    "uvicorn",
+]
+
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
