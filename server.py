@@ -62,12 +62,16 @@ if __name__ == "__main__":
     parser.add_argument("--host", type=str, default="localhost")
     parser.add_argument("--port", type=int, default=9000)
     parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument("--local_only", action="store_true", default=True)
     args = parser.parse_args()
     logger.info(f"args: {args}")
 
     # Load up the model on the appropriate device.
     pipe = AutoPipelineForText2Image.from_pretrained(
-        "stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16"
+        "stabilityai/sdxl-turbo",
+        torch_dtype=torch.float16,
+        variant="fp16",
+        local_files_only=args.local_only,
     )
     pipe.to(args.device)
     app.pipe = pipe
